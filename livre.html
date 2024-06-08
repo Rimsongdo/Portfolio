@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bangers" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 3D Book</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            perspective: 1200px;
+            background-size: 100% 100%;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .book {
+            transform-style: preserve-3d;
+            position: relative;
+            height: 60%;
+            cursor: pointer;
+            backface-visibility: visible;
+            width: 350px;
+            height: 400px;
+            transform: rotate(0deg) skewX(0deg);
+            background-size: cover;
+            box-shadow: -30px 60px 50px rgba(0, 0, 0, 1);
+            transition: transform 1s ease-in-out, box-shadow 1.5s ease-in-out, opacity 1s ease-in-out;
+        }
+        .book::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            bottom: -14px;
+            left: -4px;
+            background: #e2e2e2;
+            transform: skewX(-40deg);
+        }
+        .book::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 100%;
+            border-top: 4px solid black;
+            border-bottom: 4px solid black;
+            background-size: cover;
+            left: -10px;
+            top: 6px;
+            transform: skewY(-50deg);
+            z-index: -1;
+        }
+        .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+            transform-style: preserve-3d;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left center;
+            transition: transform 1s ease-in-out, box-shadow 1.5s ease-in-out;
+        }
+        .front, .back {
+            border: 4px solid black;
+            background-size: cover;
+        }
+        .front, .page1, .page3, .page5 {
+            border-bottom-right-radius: .5em;
+            border-top-right-radius: .5em;
+        }
+        .back, .page2, .page4, .page6 {
+            border-bottom-right-radius: .5em;
+            border-top-right-radius: .5em;
+        }
+        .page1 { 
+            background: #efefef;
+        }
+        .page2 {
+            background: #efefef;
+        }
+        .page3 {
+            background: #f5f5f5;
+        }
+        .page4 {
+            background: #f5f5f5;
+        }
+        .page5 {
+            background: #fafafa;
+        }
+        .page6 {
+            background: #fdfdfd;
+        }
+        .book:hover .front {
+            transform: rotateY(-155deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 lightgrey;
+        }
+        .book:hover .page1 {
+            transform: rotateY(-140deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 grey;
+        }
+        .book:hover .page2 {
+            transform: rotateY(-30deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 grey;
+        }
+        .book:hover .page3 {
+            transform: rotateY(-140deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 grey;
+        }
+        .book:hover .page4 {
+            transform: rotateY(-40deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 grey;
+        }
+        .book:hover .page5 {
+            transform: rotateY(-130deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 grey;
+        }
+        .book:hover .page6 {
+            transform: rotateY(-50deg) scale(1.1);
+            box-shadow: 0 1em 1em 0 grey;
+        }
+        .book:hover .back {
+            transform: rotateY(-20deg) scale(1.1);
+        }
+        .book::before,
+        .book::after {
+            transition: transform 1s ease-in-out;
+        }
+        .book:hover::before,
+        .book:hover::after {
+            display: none;
+        }
+        .title {
+            text-align: center;
+            padding-top: 115px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px grey;
+            font-family: Bangers;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .rot {
+            transform: rotateY(-180deg);
+        }
+        ul {
+            list-style-type: none;
+        }
+        .page5 img, .page6 img {
+            padding-right: 15%;
+            padding-top: 3%;
+            width: 25%;
+        }
+        li {
+            font-size: 18px;
+        }
+        h1 {
+            font-size: 30px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        /* Specific styles for each book */
+        .book1 {
+            background-image: url('cover1.jpg');
+        }
+        .book1 .front, .book1 .back {
+            background-image: url('cover1.jpg');
+        }
+        .book1::before {
+            background-image: url('cover1.jpg');
+        }
+        .book2 {
+            background-image: url('cover2.jpg');
+        }
+        .book2 .front, .book2 .back {
+            background-image: url('cover2.jpg');
+        }
+        .book2::before {
+            background-image: url('cover2.jpg');
+        }
+        .book3 {
+            background-image: url('cover3.jpg');
+        }
+        .book3 .front, .book3 .back {
+            background-image: url('cover3.jpg');
+        }
+        .book3::before {
+            background-image: url('cover3.jpg');
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: all 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="book book1">
+            <div class="back"></div>
+            <div class="page6 container">
+                <div class="container">
+                    <h1>Embedded-Software</h1>
+                    <ul>
+                        <li>MCU: STM32, PIC18, ARDUINO, ESP32</li>
+                        <li>Bus: SPI, I2C, UART, CAN, USB</li>
+                        <li>Scheduling-RTOS</li>
+                        <li>IoT and Sensors</li>
+                        <li>Hardware: VHDL, FPGA, PCB</li>
+                    </ul>
+                </div>
+                <div class="container pb-5 me-0">
+                    <h1 class="">Tools</h1>
+                    <img class="" src="vscode.jpeg" alt="">
+                    <img class="" src="git.png" alt="">
+                    <img class="" src="arduino.png" alt="">
+                    <img class="" src="postgres.png" alt="">
+                    <img class="" src="proteus.png" alt="">
+                    <img class="" src="eclipse.jpg" alt="">
+                </div>
+            </div>
+            <div class="page5"></div>
+            <div class="page4 container">
+                <h2>Communication-Protocols</h2>
+                <ul>
+                    <li>IEEE-802.15.4</li>
+                    <li>WIFI, BLUETOOTH</li>
+                    <li>MQTT, DDS</li>
+                    <li>MODBUS</li>
+                    <li>Zigbee, Zwave</li>
+                    <li>6LowPAN</li>
+                </ul>
+            </div>
+            <div class="page3"></div>
+            <div class="page2 container">
+                <h2>OS and Network</h2>
+                <ul>
+                    <li>Linux/Windows</li>
+                    <li>Virtualisation, Containers</li>
+                    <li>Network-Configuration</li>
+                </ul>
+            </div>
+            <div class="page1 container">
+                <h2>Languages</h2>
+                <ul>
+                    <li>C/C++, Python, Matlab</li>
+                    <li>Bash-Scripts</li>
+                    <li>Java, Javascript, SQL</li>
+                </ul>
+            </div>
+            <div class="front container">
+                <h1 class="title">Resume</h1>
+            </div>
+        </div>
+        <div class="book book2">
+            <div class="back"></div>
+            <div class="page6 container">
+                <div class="container">
+                    <h1>Application-Development</h1>
+                    <ul>
+                        <li>Android, IOS</li>
+                        <li>Full-Stack Web-Development</li>
+                    </ul>
+                </div>
+                <div class="container pb-5 me-0">
+                    <h1 class="">Tools</h1>
+                    <img class="" src="androidstudio.png" alt="">
+                    <img class="" src="xcode.png" alt="">
+                    <img class="" src="git.png" alt="">
+                    <img class="" src="figma.png" alt="">
+                    <img class="" src="heroku.png" alt="">
+                    <img class="" src="firebase.png" alt="">
+                </div>
+            </div>
+            <div class="page5"></div>
+            <div class="page4 container">
+                <h2>Backend</h2>
+                <ul>
+                    <li>Node.js, Django, Flask</li>
+                    <li>Database: SQL, NoSQL</li>
+                </ul>
+            </div>
+            <div class="page3"></div>
+            <div class="page2 container">
+                <h2>Frontend</h2>
+                <ul>
+                    <li>HTML, CSS, JS</li>
+                    <li>React, Angular, Vue.js</li>
+                </ul>
+            </div>
+            <div class="page1 container">
+                <h2>Languages</h2>
+                <ul>
+                    <li>Java, Kotlin, Swift</li>
+                    <li>JavaScript, TypeScript</li>
+                    <li>Python, SQL</li>
+                </ul>
+            </div>
+            <div class="front container">
+                <h1 class="title">Resume</h1>
+            </div>
+        </div>
+        <div class="book book3">
+            <div class="back"></div>
+            <div class="page6 container">
+                <div class="container">
+                    <h1>Data Science</h1>
+                    <ul>
+                        <li>Data Analysis</li>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning</li>
+                    </ul>
+                </div>
+                <div class="container pb-5 me-0">
+                    <h1 class="">Tools</h1>
+                    <img class="" src="jupyter.png" alt="">
+                    <img class="" src="tensorflow.png" alt="">
+                    <img class="" src="keras.png" alt="">
+                    <img class="" src="numpy.png" alt="">
+                    <img class="" src="pandas.png" alt="">
+                    <img class="" src="scipy.png" alt="">
+                </div>
+            </div>
+            <div class="page5"></div>
+            <div class="page4 container">
+                <h2>Deep Learning</h2>
+                <ul>
+                    <li>Neural Networks</li>
+                    <li>Convolutional NN</li>
+                    <li>Recurrent NN</li>
+                    <li>GANs</li>
+                </ul>
+            </div>
+            <div class="page3"></div>
+            <div class="page2 container">
+                <h2>Machine Learning</h2>
+                <ul>
+                    <li>Supervised Learning</li>
+                    <li>Unsupervised Learning</li>
+                    <li>Reinforcement Learning</li>
+                </ul>
+            </div>
+            <div class="page1 container">
+                <h2>Languages</h2>
+                <ul>
+                    <li>Python, R, SQL</li>
+                    <li>MATLAB</li>
+                    <li>Julia</li>
+                </ul>
+            </div>
+            <div class="front container">
+                <h1 class="title">Resume</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const books = document.querySelectorAll('.book');
+            const container = document.querySelector('.container');
+
+            books.forEach(book => {
+                book.addEventListener('mouseover', () => {
+                    books.forEach(b => {
+                        if (b !== book) {
+                            b.style.opacity = '0';
+                            b.style.transform = 'scale(0.8)';
+                        }
+                    });
+                    book.style.transform = 'scale(1.2)';
+                    container.style.justifyContent = 'center';
+                });
+
+                book.addEventListener('mouseout', () => {
+                    books.forEach(b => {
+                        b.style.opacity = '1';
+                        b.style.transform = 'scale(1)';
+                    });
+                    container.style.justifyContent = 'space-around';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
