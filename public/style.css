@@ -5,13 +5,19 @@
     }
     body {
         width: 100%;
-        height: 400vh;
+        height: 380vh;
         font-family: 'RetroFont', cursive;
        
         justify-content: space-around;
         align-items: center;
         perspective: 1200px;
         background-size: 100% 100%;
+    }
+    #bienvenu{
+        font-weight: bold;
+        padding-top: 3%;
+        font-family: 'Indie Flower', cursive;
+        text-align: center;
     }
     
     .Page1 img,.Page2 img,.Page3 img{
@@ -34,10 +40,10 @@
         background: rgba(0, 0, 0, 0.1);
     }
     .book1{
-        margin-top: 2%;
+        margin-top: 0%;
     }
     .book3,.book2{
-        margin-top: 2%;
+        margin-top: 0%;
     }
     .book {
         
