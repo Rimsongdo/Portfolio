@@ -108,32 +108,32 @@
         border-top-right-radius: .5em;
     }
     .page1 { 
-        background-image: url("vint.avif");
+        background-image: url("./public/vint.avif");
      
        background-size: cover;
     }
     .page2 {
-        background-image: url("vint.avif");
+        background-image: url("./public/vint.avif");
        
        background-size: cover;
     }
     .page3 {
-        background-image: url("vint.avif");
+        background-image: url("./public/vint.avif");
       
         background-size: cover;
     }
     .page4 {
-        background-image: url("vint.avif");
+        background-image: url("./public/vint.avif");
       
         background-size: cover;
     }
     .page5 {
-        background-image: url("vint.avif");
+        background-image: url("./public/vint.avif");
         
         background-size: cover;
     }
     .page6 {
-        background-image: url("vint.avif");
+        background-image: url("./public/vint.avif");
        
         background-size: cover;
     }
@@ -165,31 +165,31 @@
 
     
     .book1 {
-        background-image: url('cuirvint.jpg');
+        background-image: url('./public/cuirvint.jpg');
     }
     .book1 .front, .book1 .back {
-        background-image: url('cuirvint.jpg');
+        background-image: url('./public/cuirvint.jpg');
     }
     .book1::before {
-        background-image: url('cuirvint.jpg');
+        background-image: url('./public/cuirvint.jpg');
     }
     .book2 {
-        background-image: url('cuirvin.jpg');
+        background-image: url('./public/cuirvin.jpg');
     }
     .book2 .front, .book2 .back {
-        background-image: url('cuirvin.jpg');
+        background-image: url('./public/cuirvin.jpg');
     }
     .book2::before {
-        background-image: url('cuirvin.jpg');
+        background-image: url('./public/cuirvin.jpg');
     }
     .book3 {
-        background-image: url('cuirvi.jpg');
+        background-image: url('./public/cuirvi.jpg');
     }
     .book3 .front, .book3 .back {
-        background-image: url('cuirvi.jpg');
+        background-image: url('./public/cuirvi.jpg');
     }
     .book3::before {
-        background-image: url('cuirvi.jpg');
+        background-image: url('./public/cuirvi.jpg');
     }
     .page-content {
         width: 100%;
